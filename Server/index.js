@@ -43,9 +43,8 @@ server.on("connection", (client) => {
             setTimeout(() => {
                 clients.forEach(cli => {
                     cli.write(JSON.stringify({
-                        type: "chat",
-                        user: "System",
-                        message: name + " has joined the chat."
+                        type: "join",
+                        user: name,
                     }));
                 });
             },700);
@@ -89,9 +88,8 @@ server.on("connection", (client) => {
         if(!client._username) return;
         clients.forEach(cli => {
             cli.write(JSON.stringify({
-                type: "chat",
-                user: "System",
-                message: client._username + " has left the chat."
+                type: "leave",
+                user: client._username,
             }));
         });
         clients.splice(clients.indexOf(client), 1);

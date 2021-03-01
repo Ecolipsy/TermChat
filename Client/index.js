@@ -57,5 +57,11 @@ client.on("connect", () => {
         if(data["type"] == "usernamechange"){
             console.log(`Your new username is ${data["new"]}. (${data["old"]} => ${data["new"]})`);
         }
+        if(data["type"] == "join"){
+            console.log(`${data["user"]} has joined the chat.`);
+        }
+        if(data["type"] == "leave"){
+            console.log(`${data["user"]} has left the chat.`);
+        }
     });
 });
